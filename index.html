@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excel Sheet Generator</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,11 +14,11 @@
 <body>
     <div class="form">
         <h1>Excel Sheet Generator</h1>
-        <input type="number" class="rows" placeholder="Enter number of rows">
-        <input type="number" class="columns" placeholder="Enter number of columns">
+        <input id="input1" type="number" class="rows" placeholder="Enter number of rows">
+        <input id="input2" type="number" class="columns" placeholder="Enter number of columns">
         <div class="btns">
-            <button onclick="generateTable()">Generate</button>
-            <button onclick="ExportToExcel('xlsx')">Export</button>
+            <button id="generate-btn" onclick="generateTable()">Generate</button>
+            <button id="export-btn" onclick="ExportToExcel('xlsx')">Export</button>
         </div>
     </div>
     <div class="table">

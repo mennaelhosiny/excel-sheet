@@ -2,7 +2,6 @@ let table = document.getElementsByClassName("sheet-body")[0],
 rows = document.getElementsByClassName("rows")[0],
 columns = document.getElementsByClassName("columns")[0]
 tableExists = false
-
 const generateTable = () => {
     let rowsNumber = parseInt(rows.value), columnsNumber = parseInt(columns.value)
     table.innerHTML = ""
@@ -27,3 +26,28 @@ const ExportToExcel = (type, fn, dl) => {
     return dl ? XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' })
         : XLSX.writeFile(wb, fn || ('MyNewSheet.' + (type || 'xlsx')))
 }
+
+
+const generateButton = document.getElementById('generate-btn');
+generateButton.addEventListener('click', function () {
+  const field1 = document.getElementById('input1').value;
+  const field2 = document.getElementById('input2').value;
+
+  if (field1 === '' || field2 === '') {
+    swal('Please fill in all fields');
+  }
+ else {
+    generateTable()
+  }
+});
+
+
+const exportButton = document.getElementById('export-btn');
+
+exportButton.addEventListener('click', function () {
+  if (!generateTable()) {
+    swal( 'No table to export');
+  } else {
+    ExportToExcel()
+  }
+});
